@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:pokedex/ui/screens/survey/detail/quiz.dart';
-import 'package:pokedex/ui/screens/survey/model/modelAnswer.dart';
-import 'package:pokedex/ui/screens/survey/model/modelQuestion.dart';
+import '../../../../resource/Mau1/A.dart';
+import '../../../../resource/Mau1/A1.5.dart';
+import '../../../../resource/Mau1/A1.dart';
+import '../../../../resource/Mau1/A2.dart';
 
 class SurveyDetail extends StatefulWidget {
   @override
@@ -48,82 +49,71 @@ class _SurveyDetailScreenState extends State<SurveyDetail> {
     ),
   ];
 
-  final List<ModelQuestion> _questions = [
-    ModelQuestion(
-        QuestionID: 1,
-        QuestionName: 'Process of inserting an element in stack is called?',
-        QuestionType: 1,
-        AnswerResult: "",
-        Answers: [
-          ModelAnswer(AnswerID: 1, AnswerName: 'ok'),
-          ModelAnswer(AnswerID: 2, AnswerName: 'ko'),
-        ]),
-    ModelQuestion(
-        QuestionID: 2,
-        QuestionName: 'How Are You?',
-        QuestionType: 2,
-        AnswerResult: "",
-        Answers: [
-          ModelAnswer(AnswerID: 3, AnswerName: 'fine'),
-          ModelAnswer(AnswerID: 4, AnswerName: 'not okay'),
-        ]),
-    ModelQuestion(
-        QuestionID: 3,
-        QuestionName: 'How Are You?',
-        QuestionType: 3,
-        AnswerResult: "",
-        Answers: [
-          // ModelAnswer(AnswerID: 3, AnswerName: 'fine'),
-          // ModelAnswer(AnswerID: 4, AnswerName: 'not okay'),
-        ]),
-    ModelQuestion(
-        QuestionID: 4,
-        QuestionName: 'How Are You?',
-        QuestionType: 4,
-        AnswerResult: "",
-        Answers: [
-          ModelAnswer(AnswerID: 3, AnswerName: 'fine'),
-          ModelAnswer(AnswerID: 4, AnswerName: 'not okay'),
-        ])
-  ];
+  // final List<ModelQuestion> _questions = [
+  //   ModelQuestion(
+  //       QuestionID: 1,
+  //       QuestionName: 'Process of inserting an element in stack is called?',
+  //       AnswerResult: ""),
+  //   ModelQuestion(QuestionID: 2, QuestionName: 'How Are You?', AnswerResult: "", Answers: [
+  //     ModelAnswer(AnswerID: 3, AnswerName: 'fine'),
+  //     ModelAnswer(AnswerID: 4, AnswerName: 'not okay'),
+  //   ]),
+  //   ModelQuestion(QuestionID: 3, QuestionName: 'How Are You?', AnswerResult: "", Answers: []),
+  //   ModelQuestion(QuestionID: 4, QuestionName: 'How Are You?', AnswerResult: "", Answers: [
+  //     ModelAnswer(AnswerID: 3, AnswerName: 'fine'),
+  //     ModelAnswer(AnswerID: 4, AnswerName: 'not okay'),
+  //   ])
+  // ];
 
-  var _questionIndex = 0;
+  var questionIndex = 0;
 
-  void _fnQuestionsIndex(type) {
+  void fnQuestionsIndex(type) {
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
       setState(() {
         if (type == 1) {
-          _questionIndex = _questionIndex - 1;
+          questionIndex = questionIndex - 1;
         } else {
-          _questionIndex = _questionIndex + 1;
+          questionIndex = questionIndex + 1;
         }
       });
     });
   }
 
-  var answerID = 0;
-  void onChangeAnswerQuiz(answer, questionID) {
-    var indexQ = _questions.indexWhere((person) => person.QuestionID == questionID);
-    setState(() {
-      if (_questions[indexQ].QuestionType == 2) {
-        if (_questions[indexQ].AnswerResult.toString().contains(answer.toString())) {
-          _questions[indexQ].AnswerResult = _questions[indexQ]
-              .AnswerResult
-              .toString()
-              .replaceAll(answer.toString(), "")
-              .split(";")
-              .where((element) => element != '')
-              .join(";");
-        } else {
-          _questions[indexQ].AnswerResult =
-              _questions[indexQ].AnswerResult + ";" + answer.toString();
-        }
-      } else {
-        _questions[indexQ].AnswerResult = answer.toString();
-      }
+  Widget RenderWidget() {
+    switch (questionIndex) {
+      case 0:
+        return A(onChangeAnswerQuiz);
+      case 1:
+        return A1(onChangeAnswerQuiz);
+      case 2:
+        return A2(onChangeAnswerQuiz);
+      case 3:
+        return A1point5(onChangeAnswerQuiz);
+      default:
+        return Container();
+    }
+  }
 
-      print(_questions[indexQ].AnswerResult);
-    });
+  void onChangeAnswerQuiz(answer, questionID) {
+    // var indexQ = _questions.indexWhere((person) => person.QuestionID == questionID);
+    // setState(() {
+    //   if (_questions[indexQ].QuestionType == 2) {
+    //     if (_questions[indexQ].AnswerResult.toString().contains(answer.toString())) {
+    //       _questions[indexQ].AnswerResult = _questions[indexQ]
+    //           .AnswerResult
+    //           .toString()
+    //           .replaceAll(answer.toString(), "")
+    //           .split(";")
+    //           .where((element) => element != '')
+    //           .join(";");
+    //     } else {
+    //       _questions[indexQ].AnswerResult =
+    //           _questions[indexQ].AnswerResult + ";" + answer.toString();
+    //     }
+    //   } else {
+    //     _questions[indexQ].AnswerResult = answer.toString();
+    //   }
+    // });
   }
 
   @override
@@ -152,12 +142,42 @@ class _SurveyDetailScreenState extends State<SurveyDetail> {
         title: Text("Tên khảo sát"),
         centerTitle: true,
       ),
-      body: Quiz(
-        questions: _questions,
-        fnQuestionIndex: _fnQuestionsIndex,
-        fnChangeAnswerQuiz: onChangeAnswerQuiz,
-        questionIndex: _questionIndex,
-      ), //
+      body: SingleChildScrollView(child: RenderWidget()),
+      // Quiz(
+      //   questions: _questions,
+      //   fnQuestionIndex: _fnQuestionsIndex,
+      //   fnChangeAnswerQuiz: onChangeAnswerQuiz,
+      //   questionIndex: _questionIndex,
+      // ), //
+      bottomNavigationBar: Padding(
+        padding: EdgeInsets.all(8.0),
+        child: Row(
+          children: [
+            Expanded(
+                child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        fnQuestionsIndex(1);
+                      },
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Icon(Icons.arrow_left), Text('Trở lại')]),
+                    ))),
+            Expanded(
+                child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        fnQuestionsIndex(2);
+                      },
+                      child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [Text('Tiếp theo'), Icon(Icons.arrow_right)]),
+                    ))),
+          ],
+        ),
+      ),
       drawer: Drawer(
           child: Scaffold(
         appBar: AppBar(title: Text('Thông tin')),

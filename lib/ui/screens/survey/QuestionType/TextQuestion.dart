@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import '../model/modelQuestion.dart';
-import 'dart:async';
 
 class TextQuestion extends StatefulWidget {
   final List<ModelQuestion> questions;
@@ -15,12 +14,9 @@ class TextQuestion extends StatefulWidget {
 
 class _TextQuestion extends State<TextQuestion> {
   TextEditingController textController = TextEditingController();
-  Timer? _debounce;
   void _onSearchChanged(String query) {
-    if (_debounce?.isActive ?? false) _debounce?.cancel();
-    _debounce = Timer(const Duration(milliseconds: 500), () {
-      widget.fnChangeAnswerQuiz(query, widget.questions[widget.questionIndex].QuestionID);
-    });
+    
+    widget.fnChangeAnswerQuiz(query, widget.questions[widget.questionIndex].QuestionID);
   }
 
   @override
@@ -28,19 +24,21 @@ class _TextQuestion extends State<TextQuestion> {
     return Container(
         width: double.infinity,
         margin: const EdgeInsets.all(10),
-        child: Column(children: [
-          Container(
-              child: Text(widget.questions[widget.questionIndex].QuestionName,
-                  style: const TextStyle(fontSize: 28, color: Colors.white),
-                  textAlign: TextAlign.center)),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text(
+            widget.questions[widget.questionIndex].QuestionName,
+            style: const TextStyle(
+              fontSize: 14,
+              color: Colors.black,
+            ),
+          ),
           TextField(
               controller: textController,
               style: TextStyle(color: Colors.black),
               decoration: InputDecoration(
-                hintText: "Mật khẩu",
                 hintStyle: TextStyle(color: Colors.grey),
                 enabledBorder: UnderlineInputBorder(
-                  borderSide: BorderSide(width: 3, color: Colors.grey.shade100),
+                  borderSide: BorderSide(width: 1, color: Colors.grey.shade300),
                 ),
               ),
               onChanged: _onSearchChanged),

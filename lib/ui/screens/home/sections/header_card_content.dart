@@ -63,7 +63,6 @@ class _HeaderCardContent extends StatelessWidget {
                 alignment: Alignment.topLeft,
                 child: IconButton(
                     onPressed: () {
-                      // Function to toggle theme
                       themeCubit.toggleTheme();
                     },
                     padding: EdgeInsets.only(
@@ -77,7 +76,7 @@ class _HeaderCardContent extends StatelessWidget {
               ),
             ),
             _buildTitle(),
-            _buildCategories(context),
+            Expanded(child: Center(child: _buildCategories(context)))
           ],
         ),
       ),
@@ -105,8 +104,8 @@ class _HeaderCardContent extends StatelessWidget {
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
         crossAxisSpacing: 20,
-        childAspectRatio: 1.7,
-        mainAxisSpacing: 20,
+        childAspectRatio: 1.4,
+        mainAxisSpacing: 30,
       ),
       itemCount: categories.length,
       itemBuilder: (context, index) {
