@@ -7,9 +7,8 @@ class Question extends StatefulWidget {
   final int questionIndex;
   final double fontSize;
   final Function fnChangeAnswerQuiz;
-  final bool isOther;
   const Question(this.questions, this.questionIndex, this.fnChangeAnswerQuiz,
-      {Key? key, this.isOther = false, this.fontSize = 14})
+      {Key? key, this.fontSize = 14})
       : super(key: key);
 
   @override
@@ -49,28 +48,35 @@ class _QuestionRadio extends State<Question> {
                   style: TextStyle(fontSize: textSize, color: Colors.black),
                   textAlign: TextAlign.left)),
           ...(widget.questions[widget.questionIndex].Answers).map((answer) {
-            return GestureDetector(
-                onTap: () => onChangeRadio(answer.AnswerID),
-                child: ListTile(
-                  leading: answer.AnswerID == selected
-                      ? Icon(Icons.check_circle_outline)
-                      : Icon(Icons.circle_outlined),
-                  title: Text(answer.AnswerName),
-                ));
+            return Column(
+              children: [
+                GestureDetector(
+                    onTap: () => onChangeRadio(answer.AnswerID),
+                    child: ListTile(
+                      leading: answer.AnswerID == selected
+                          ? Icon(
+                              Icons.check_circle,
+                              size: 24,
+                              color: Colors.green.shade300,
+                            )
+                          : Icon(Icons.circle_outlined, size: 24),
+                      title: Text(answer.AnswerName),
+                    )),
+                answer.IsOther == true && answer.AnswerID == selected
+                    ? TextField(
+                        controller: textController,
+                        style: TextStyle(color: Colors.black),
+                        decoration: InputDecoration(
+                          hintStyle: TextStyle(color: Colors.grey),
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(width: 1, color: Colors.grey.shade300),
+                          ),
+                        ),
+                        onChanged: _onSearchChanged)
+                    : Container()
+              ],
+            );
           }).toList(),
-          widget.isOther == true &&
-                  widget.questions[widget.questionIndex].Answers.length == selected
-              ? TextField(
-                  controller: textController,
-                  style: TextStyle(color: Colors.black),
-                  decoration: InputDecoration(
-                    hintStyle: TextStyle(color: Colors.grey),
-                    enabledBorder: UnderlineInputBorder(
-                      borderSide: BorderSide(width: 1, color: Colors.grey.shade300),
-                    ),
-                  ),
-                  onChanged: _onSearchChanged)
-              : Container()
         ]));
   }
 }

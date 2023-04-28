@@ -34,6 +34,33 @@ class _AState extends State<A> {
     ModelQuestion(QuestionID: 8, QuestionName: 'Số điện thoại:', AnswerResult: "", Answers: []),
     ModelQuestion(QuestionID: 9, QuestionName: 'Email(nếu có)', AnswerResult: "", Answers: []),
   ];
+
+  final List<ModelQuestion> _answer = [
+    ModelQuestion(
+        QuestionID: 2,
+        QuestionName: 'Huyện/quận(thị xã,thành phố thuộc tỉnh)',
+        AnswerResult: "abc",
+        Answers: []),
+    ModelQuestion(
+        QuestionID: 1,
+        QuestionName: 'Tỉnh, thành phố thuộc trung ương',
+        AnswerResult: "test",
+        Answers: []),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    for (var answer in _answer) {
+      for (var i = 0; i < _questions.length; i++) {
+        if (_questions[i].QuestionID == answer.QuestionID) {
+          _questions[i].AnswerResult = answer.AnswerResult;
+          break;
+        }
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(

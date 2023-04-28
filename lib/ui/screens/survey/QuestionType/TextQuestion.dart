@@ -15,8 +15,15 @@ class TextQuestion extends StatefulWidget {
 class _TextQuestion extends State<TextQuestion> {
   TextEditingController textController = TextEditingController();
   void _onSearchChanged(String query) {
-    
     widget.fnChangeAnswerQuiz(query, widget.questions[widget.questionIndex].QuestionID);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setState(() {
+      textController.text = widget.questions[widget.questionIndex].AnswerResult;
+    });
   }
 
   @override

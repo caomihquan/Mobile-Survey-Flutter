@@ -37,7 +37,7 @@ class _A1point5State extends State<A1point5> {
           ModelAnswer(AnswerID: 6, AnswerName: 'Đại học'),
           ModelAnswer(AnswerID: 7, AnswerName: 'Thạc sỹ'),
           ModelAnswer(AnswerID: 8, AnswerName: 'Tiến sỹ'),
-          ModelAnswer(AnswerID: 9, AnswerName: 'Trình độ khác (ghi rõ):')
+          ModelAnswer(AnswerID: 9, AnswerName: 'Trình độ khác (ghi rõ):', IsOther: true)
         ]),
   ];
   @override
@@ -47,7 +47,7 @@ class _A1point5State extends State<A1point5> {
       Question(_questions, 1, widget.fnChangeAnswerQuiz),
       TextQuestion(_questions, 2, widget.fnChangeAnswerQuiz),
       Question(_questions, 3, widget.fnChangeAnswerQuiz),
-      Question(_questions, 4, widget.fnChangeAnswerQuiz, isOther: true),
+      Question(_questions, 4, widget.fnChangeAnswerQuiz),
     ]);
   }
 }

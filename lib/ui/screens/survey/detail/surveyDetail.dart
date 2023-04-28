@@ -3,6 +3,12 @@ import '../../../../resource/Mau1/A.dart';
 import '../../../../resource/Mau1/A1.5.dart';
 import '../../../../resource/Mau1/A1.dart';
 import '../../../../resource/Mau1/A2.dart';
+import '../../../../resource/Mau1/A3.dart';
+import '../../../../resource/Mau1/A5.dart';
+import '../../../../resource/Mau1/B1.dart';
+import '../../../../resource/Mau1/C.dart';
+import '../../../../resource/Mau1/D.dart';
+import '../../../../resource/Mau1/Final.dart';
 
 class SurveyDetail extends StatefulWidget {
   @override
@@ -89,6 +95,18 @@ class _SurveyDetailScreenState extends State<SurveyDetail> {
         return A2(onChangeAnswerQuiz);
       case 3:
         return A1point5(onChangeAnswerQuiz);
+      case 4:
+        return A3(onChangeAnswerQuiz);
+      case 5:
+        return A5(onChangeAnswerQuiz);
+      case 6:
+        return B1(onChangeAnswerQuiz);
+      case 7:
+        return D(onChangeAnswerQuiz);
+      case 8:
+        return C(onChangeAnswerQuiz);
+      case 9:
+        return Final1(onChangeAnswerQuiz);
       default:
         return Container();
     }
@@ -153,28 +171,32 @@ class _SurveyDetailScreenState extends State<SurveyDetail> {
         padding: EdgeInsets.all(8.0),
         child: Row(
           children: [
-            Expanded(
-                child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        fnQuestionsIndex(1);
-                      },
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Icon(Icons.arrow_left), Text('Trở lại')]),
-                    ))),
-            Expanded(
-                child: Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        fnQuestionsIndex(2);
-                      },
-                      child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [Text('Tiếp theo'), Icon(Icons.arrow_right)]),
-                    ))),
+            questionIndex != 0
+                ? Expanded(
+                    child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            fnQuestionsIndex(1);
+                          },
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [Icon(Icons.arrow_left), Text('Trở lại')]),
+                        )))
+                : SizedBox(),
+            questionIndex != 9
+                ? Expanded(
+                    child: Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: ElevatedButton(
+                          onPressed: () {
+                            fnQuestionsIndex(2);
+                          },
+                          child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [Text('Tiếp theo'), Icon(Icons.arrow_right)]),
+                        )))
+                : SizedBox(),
           ],
         ),
       ),
