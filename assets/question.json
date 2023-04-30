@@ -1,0 +1,151 @@
+[
+    {
+        "QuestionID": "SL000",
+        "QuestionName": "THÔNG TIN CHUNG",
+        "QuestionType": 0,
+        "AnswerResult": ""
+    },
+    {
+        "QuestionID": "SL001",
+        "QuestionName": "Tỉnh, thành phố trực thuộc Trung ương:",
+        "QuestionType": 1,
+        "AnswerResult": "",
+        "QuestionParent": "SL000"
+    },
+    {
+        "QuestionID": "SL002",
+        "QuestionName": "Huyện/quận(thị xã, thành phố thuộc tỉnh):",
+        "QuestionType": 1,
+        "AnswerResult": "",
+        "QuestionParent": "SL000"
+    },
+    {
+        "QuestionID": "SL003",
+        "QuestionName": "Xã/phường/thị trấn:",
+        "QuestionType": 1,
+        "AnswerResult": "",
+        "QuestionParent": "SL000"
+    },
+    {
+        "QuestionID": "SL004",
+        "QuestionName": "Địa bàn:",
+        "QuestionType": 1,
+        "AnswerResult": "",
+        "QuestionParent": "SL000"
+    },
+    {
+        "QuestionID": "SL005",
+        "QuestionName": "Mã cơ sở:",
+        "QuestionType": 1,
+        "AnswerResult": "",
+        "QuestionParent": "SL000"
+    },
+    {
+        "QuestionID": "SL006",
+        "QuestionName": "Tên cơ sở:",
+        "QuestionType": 1,
+        "AnswerResult": "",
+        "QuestionParent": "SL000"
+    },
+    {
+        "QuestionID": "SL007",
+        "QuestionName": "Địa chỉ(số nhà, đường phố, tổ/thôn/ấp):",
+        "QuestionType": 1,
+        "AnswerResult": "",
+        "QuestionParent": "SL000"
+    },
+    {
+        "QuestionID": "SL008",
+        "QuestionName": "Số nhà:",
+        "QuestionType": 1,
+        "AnswerResult": "",
+        "QuestionParent": "SL000"
+    },
+    {
+        "QuestionID": "SL009",
+        "QuestionName": "Email(nếu có):",
+        "QuestionType": 1,
+        "AnswerResult": "",
+        "QuestionParent": "SL000"
+    },
+    {
+        "QuestionID": "SL010",
+        "QuestionName": "Mã ngành hoạt động kinh doanh",
+        "QuestionType": 3,
+        "AnswerResult": "",
+        "QuestionParent": "SL000"
+    },
+    {
+        "QuestionID": "SL011",
+        "QuestionName": "Địa điểm sản xuất kinh doanh của cơ sở là",
+        "QuestionType": 0,
+        "AnswerResult": "",
+        "ValidType": 1,
+        "QuestionParent": "SL000"
+    },
+    {
+        "QuestionID": "SL012",
+        "QuestionName": "Địa điểm sản xuất kinh doanh của cơ sở",
+        "QuestionType": 0,
+        "AnswerResult": "",
+        "ValidType": 1,
+        "QuestionParent": "SL000"
+    },
+    {
+        "QuestionID": "SL013",
+        "QuestionName": "Tình trạng đăng ký kinh doanh của cơ sở SXKD của ông/bà?",
+        "QuestionType": 0,
+        "AnswerResult": "",
+        "QuestionParent": "SL000"
+    },
+    {
+        "QuestionID": "SL014",
+        "QuestionName": "THÔNG TIN LAO ĐỘNG VỀ CƠ SỞ",
+        "QuestionType": 0,
+        "AnswerResult": ""
+    },
+    {
+        "QuestionID": "SL015",
+        "QuestionName": "Tổng số lao động(kể cả chủ cơ sở) làm việc tại cơ sở của ông/bà tại thời điểm 01/10/2023 là bao nhiêu người?",
+        "QuestionType": 2,
+        "AnswerResult": "",
+        "ValidType": 1,
+        "QuestionParent": "SL014"
+    },
+    {
+        "QuestionID": "SL016",
+        "QuestionName": "Trong tổng số: Lao động nữ là bao nhiêu người?",
+        "QuestionType": 2,
+        "AnswerResult": "",
+        "ValidType": 2,
+        "QuestionParent": "SL014"
+    },
+    {
+        "QuestionID": "SL017",
+        "QuestionName": "Trong tổng số: Lao động thuê ngoài",
+        "QuestionType": 2,
+        "AnswerResult": "",
+        "ValidType": 3,
+        "QuestionParent": "SL014"
+    },
+    {
+        "QuestionID": "SL018",
+        "QuestionName": "THÔNG TIN VỀ NHÓM SẢN PHẨM CỦA CƠ SỞ",
+        "QuestionType": 1,
+        "AnswerResult": ""
+    },
+    {
+        "QuestionID": "SL019",
+        "QuestionName": "Mô tả sản phẩm chính của cơ sở SXKD",
+        "QuestionType": 1,
+        "AnswerResult": "",
+        "QuestionParent": "SL018"
+    },
+    {
+        "QuestionID": "SL020",
+        "QuestionName": "Mã sản phẩm",
+        "QuestionType": 2,
+        "AnswerResult": "",
+        "QuestionParent": "SL018"
+    }
+]

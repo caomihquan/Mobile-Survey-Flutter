@@ -1,0 +1,74 @@
+[
+    {
+        "AnswerID": 1,
+        "AnswerName": "Là địa điểm SXKD chủ cơ sở đi thuê/mượn",
+        "IsOther": false,
+        "QuestionID": "SL011"
+    },
+    {
+        "AnswerID": 2,
+        "AnswerName": "Là địa điểm SXKD chủ cơ sở đi thuê/mượn",
+        "IsOther": false,
+        "QuestionID": "SL011"
+    },
+    {
+        "AnswerID": 3,
+        "AnswerName": "Tại đường phố, ngõ xóm",
+        "IsOther": false,
+        "QuestionID": "SL012"
+    },
+    {
+        "AnswerID": 4,
+        "AnswerName": "Tại siêu thị, trung tâm thương mại",
+        "IsOther": false,
+        "QuestionID": "SL012"
+    },
+    {
+        "AnswerID": 5,
+        "AnswerName": "Tại chợ kiên cố, bán kiên cố",
+        "IsOther": false,
+        "QuestionID": "SL012"
+    },
+    {
+        "AnswerID": 6,
+        "AnswerName": "Tại cửa hàng minimart",
+        "IsOther": false,
+        "QuestionID": "SL012"
+    },
+    {
+        "AnswerID": 7,
+        "AnswerName": "Địa điểm cố định khác",
+        "IsOther": false,
+        "QuestionID": "SL012"
+    },
+    {
+        "AnswerID": 8,
+        "AnswerName": "Địa điểm không cố định",
+        "IsOther": false,
+        "QuestionID": "SL012"
+    },
+    {
+        "AnswerID": 9,
+        "AnswerName": "Đã có giấy chứng nhận ĐKKD",
+        "IsOther": false,
+        "QuestionID": "SL013"
+    },
+    {
+        "AnswerID": 10,
+        "AnswerName": "Chưa đăng ký ĐKKD",
+        "IsOther": false,
+        "QuestionID": "SL013"
+    },
+    {
+        "AnswerID": 11,
+        "AnswerName": "Đã ĐKKD nhưng chưa được cấp",
+        "IsOther": false,
+        "QuestionID": "SL013"
+    },
+    {
+        "AnswerID": 12,
+        "AnswerName": "Không phải ĐKKD",
+        "IsOther": false,
+        "QuestionID": "SL013"
+    }
+]

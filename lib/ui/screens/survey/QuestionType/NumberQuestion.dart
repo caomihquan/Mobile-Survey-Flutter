@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:pokedex/model/JsonQuestionModel.dart';
 
-class TextQuestion extends StatefulWidget {
+class NumberQuestion extends StatefulWidget {
   final List<JsonQuestionModel> questions;
   final int questionIndex;
   final Function fnChangeAnswerQuiz;
-  final TextInputType type;
-  const TextQuestion(this.questions, this.questionIndex, this.fnChangeAnswerQuiz,
-      {Key? key, this.type = TextInputType.text})
+  const NumberQuestion(this.questions, this.questionIndex, this.fnChangeAnswerQuiz, {Key? key})
       : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => _TextQuestion();
+  State<StatefulWidget> createState() => _NumberQuestion();
 }
 
-class _TextQuestion extends State<TextQuestion> {
+class _NumberQuestion extends State<NumberQuestion> {
   TextEditingController textController = TextEditingController();
   void _onSearchChanged(String query) {
     widget.fnChangeAnswerQuiz(query, widget.questions[widget.questionIndex].questionID);
@@ -47,6 +45,7 @@ class _TextQuestion extends State<TextQuestion> {
           TextField(
               controller: textController,
               style: TextStyle(color: Colors.black),
+              keyboardType: TextInputType.number,
               decoration: InputDecoration(
                 hintStyle: TextStyle(color: Colors.grey),
                 enabledBorder: UnderlineInputBorder(

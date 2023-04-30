@@ -33,7 +33,7 @@ dependencies:
   percent_indicator: ^4.2.3
   dropdown_button2: ^2.0.0
   shared_preferences: ^2.1.0
-  json_dynamic_widget: ^6.0.4+6
+  path_provider: ^2.0.14
 
 
 dev_dependencies:
@@ -58,6 +58,8 @@ flutter:
   assets:
     - assets/items.json
     - assets/pokemons.json
+    - assets/answer.json
+    - assets/question.json
     - assets/images/
   #  - images/a_dot_burr.jpeg
   #  - images/a_dot_ham.jpeg
