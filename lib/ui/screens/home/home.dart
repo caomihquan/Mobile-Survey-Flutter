@@ -8,13 +8,11 @@ import 'package:pokedex/data/categories.dart';
 import 'package:pokedex/domain/entities/category.dart';
 import 'package:pokedex/ui/widgets/pokeball_background.dart';
 import 'package:pokedex/routes.dart';
-
 import '../../../states/theme/theme_cubit.dart';
 import '../../../states/user/bloc/user_bloc.dart';
-import 'widgets/news_card.dart';
 import 'widgets/category_card.dart';
+import '../../widgets/alert.dart';
 
-part 'sections/pokemon_news.dart';
 part 'sections/header_card_content.dart';
 
 class HomeScreen extends StatefulWidget {

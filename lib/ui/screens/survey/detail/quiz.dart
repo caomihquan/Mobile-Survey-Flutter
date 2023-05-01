@@ -39,14 +39,12 @@ class _Quiz extends State<Quiz> {
     return Container(
         decoration: const BoxDecoration(
             gradient: LinearGradient(
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
           colors: [
             Color.fromARGB(255, 184, 219, 241),
             Color.fromARGB(255, 176, 204, 232),
           ],
         )),
-        child: _getTypeQuestion());
+        child: Align(alignment: Alignment.center, child: _getTypeQuestion()));
   }
 
   Widget _getTypeQuestion() {
@@ -62,13 +60,24 @@ class _Quiz extends State<Quiz> {
     //   widget.questions[widget.questionIndex].answerResult = question[0].answerResult;
     // } else {}
     // widget.questions[widget.questionIndex].answerResult = "222222";
-
-    if (widget.questions[widget.questionIndex].questionType == 1) {
-      return TextQuestion(widget.questions, widget.questionIndex, widget.fnChangeAnswerQuiz);
-    } else if (widget.questions[widget.questionIndex].questionType == 2) {
-      return NumberQuestion(widget.questions, widget.questionIndex, widget.fnChangeAnswerQuiz);
-    } else {
-      return Question(widget.questions, widget.questionIndex, widget.fnChangeAnswerQuiz);
+    switch (widget.questions[widget.questionIndex].questionType) {
+      case 1:
+        return TextQuestion(widget.questions, widget.questionIndex, widget.fnChangeAnswerQuiz);
+      case 2:
+        return NumberQuestion(widget.questions, widget.questionIndex, widget.fnChangeAnswerQuiz);
+      case 3:
+        return Question(widget.questions, widget.questionIndex, widget.fnChangeAnswerQuiz);
+      default:
+        return Center(
+          child: Container(
+            margin: EdgeInsets.all(10),
+            child: Text(
+              widget.questions[widget.questionIndex].questionName.toString(),
+              style: TextStyle(fontSize: 30),
+              textAlign: TextAlign.center,
+            ),
+          ),
+        );
     }
     //}
   }

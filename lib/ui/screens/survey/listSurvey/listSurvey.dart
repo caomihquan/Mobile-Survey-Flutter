@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:pokedex/routes.dart';
 
 class ListSurvey extends StatefulWidget {
   final int index;
@@ -13,7 +14,6 @@ class ListSurvey extends StatefulWidget {
 class _ListSurveyState extends State<ListSurvey> {
   TextEditingController controller = TextEditingController();
   final String url = 'https://jsonplaceholder.typicode.com/users';
-  // Get json result and convert it to model. Then add
   Future<Null> getUserDetails() async {
     final response = await http.get(Uri.parse(url));
     final responseJson = json.decode(response.body);
@@ -71,95 +71,95 @@ class _ListSurveyState extends State<ListSurvey> {
                 ? ListView.builder(
                     itemCount: _searchResult.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                          child: Card(
-                        elevation: 8,
-                        shadowColor: const Color(0xff2da9ef),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            10,
+                      return GestureDetector(
+                        onTap: () => AppNavigator.push(Routes.detail),
+                        child: Container(
+                            child: Card(
+                          elevation: 8,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              10,
+                            ),
                           ),
-                        ),
-                        child: ListTile(
-                          contentPadding: const EdgeInsets.symmetric(
-                            vertical: 8,
-                            horizontal: 16,
-                          ),
-                          leading: Container(
-                            width: 2,
-                            color: const Color(0xff2da9ef),
-                          ),
-                          title: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: Text(
-                              "1111111",
-                              style: const TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                          child: ListTile(
+                            contentPadding: const EdgeInsets.symmetric(
+                              vertical: 8,
+                              horizontal: 16,
+                            ),
+                            leading: Container(
+                              width: 2,
+                              color: const Color(0xff2da9ef),
+                            ),
+                            title: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8.0),
+                              child: Text(
+                                "1111111",
+                                style: const TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                          ),
-                          subtitle: Text(
-                            "13333",
-                            style: TextStyle(
-                              color: Colors.blue.shade700,
-                              fontSize: 16,
+                            subtitle: Text(
+                              "13333",
+                              style: TextStyle(
+                                color: Colors.blue.shade700,
+                                fontSize: 16,
+                              ),
                             ),
+                            trailing: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [Icon(Icons.chevron_right_outlined)]),
                           ),
-                          trailing: Text(
-                            "12mvvn",
-                            style: const TextStyle(
-                              color: Colors.black45,
-                              fontSize: 16,
-                            ),
-                          ),
-                        ),
-                      ));
+                        )),
+                      );
                     },
                   )
                 : ListView.builder(
                     itemCount: _userDetails.length,
                     itemBuilder: (context, index) {
-                      return Container(
-                          child: Card(
-                        elevation: 8,
-                        shadowColor: const Color(0xff2da9ef),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(
-                            10,
+                      return GestureDetector(
+                        onTap: () => AppNavigator.push(Routes.detail),
+                        child: Container(
+                            child: Card(
+                          elevation: 8,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(
+                              10,
+                            ),
                           ),
-                        ),
-                        child: ListTile(
-                          contentPadding: const EdgeInsets.symmetric(
-                            vertical: 8,
-                            horizontal: 16,
-                          ),
-                          leading: Container(
-                            width: 2,
-                            color: const Color(0xff2da9ef),
-                          ),
-                          title: Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: Text(
-                              "1111111",
-                              style: const TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.bold,
+                          child: ListTile(
+                            contentPadding: const EdgeInsets.symmetric(
+                              vertical: 8,
+                              horizontal: 16,
+                            ),
+                            leading: Container(
+                              width: 2,
+                              color: const Color(0xff2da9ef),
+                            ),
+                            title: Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 8.0),
+                              child: Text(
+                                "1111111",
+                                style: const TextStyle(
+                                  fontSize: 24,
+                                  fontWeight: FontWeight.bold,
+                                ),
                               ),
                             ),
-                          ),
-                          subtitle: Text(
-                            "13333",
-                            style: TextStyle(
-                              color: Colors.blue.shade700,
-                              fontSize: 16,
+                            subtitle: Text(
+                              "13333",
+                              style: TextStyle(
+                                color: Colors.blue.shade700,
+                                fontSize: 16,
+                              ),
                             ),
+                            trailing: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [Icon(Icons.chevron_right_outlined)]),
                           ),
-                          trailing: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [Icon(Icons.chevron_right_outlined)]),
-                        ),
-                      ));
+                        )),
+                      );
                     },
                   ),
           ),

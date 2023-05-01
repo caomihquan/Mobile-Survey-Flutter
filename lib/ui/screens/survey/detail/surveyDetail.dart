@@ -13,7 +13,6 @@ class SurveyDetail extends StatefulWidget {
 }
 
 class _SurveyDetailScreenState extends State<SurveyDetail> {
-  List<JsonQuestionModel> _data = [];
   var questionIndex = 0;
   var totalItem = 0;
 

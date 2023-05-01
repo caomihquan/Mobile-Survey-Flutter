@@ -6,7 +6,7 @@ class showAlert {
       [Function? fnOk, List<String>? listBtn, List<String>? msgBtn]) {
     void fnAlert(context) {
       Navigator.pop(context);
-      if (fnOk != null) {
+      if (fnOk != null && listBtn!.isEmpty) {
         fnOk();
       }
     }
@@ -35,32 +35,31 @@ class showAlert {
     return showDialog<PlaceholderDialog>(
       context: context,
       builder: (ctx) => PlaceholderDialog(
-        icon: fnIcon(),
-        title: title != null || title != '' ? title : 'Thông báo',
-        message: message != null || message != '' ? message : '',
-        actions: [
-          Row(children: [
-            listBtn != null
+          icon: fnIcon(),
+          title: title != null || title != '' ? title : 'Thông báo',
+          message: message != null || message != '' ? message : '',
+          actions: [
+            listBtn!.isNotEmpty
                 ? Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       TextButton(
                         onPressed: () => fnAlert(ctx),
-                        child: Text('Got It'),
+                        child: Text(listBtn[1]),
                       ),
                       TextButton(
-                        onPressed: () => fnAlert(ctx),
-                        child: Text('Got It'),
-                      )
+                        onPressed: () => fnOk!(),
+                        child: Text(listBtn[0]),
+                      ),
                     ],
                   )
-                : Expanded(
+                : Center(
                     child: TextButton(
-                    onPressed: () => fnAlert(ctx),
-                    child: Text('Đồng ý'),
-                  ))
+                      onPressed: () => fnAlert(ctx),
+                      child: Text('Đồng ý'),
+                    ),
+                  )
           ]),
-        ],
-      ),
     );
   }
 }

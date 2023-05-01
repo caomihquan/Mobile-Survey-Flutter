@@ -4,42 +4,17 @@ class _HeaderCardContent extends StatelessWidget {
   static const double height = 582;
   void _onSelectCategory(Category category, context) {
     if (category.id == 6) {
-      showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Text('Thông báo'),
-          content: const Text('Bạn có muốn đăng xuất không?'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.pop(context, 'Cancel'),
-              child: const Text('Hủy bỏ'),
-            ),
-            TextButton(
-              onPressed: () => AppNavigator.push(category.route),
-              child: const Text('Đồng ý'),
-            ),
-          ],
-        ),
-      );
+      showAlert.show(context, '', 'Thông báo', 'Bạn có muốn đăng xuất không?',
+          () => AppNavigator.push(category.route), ['Đồng ý', 'Hủy Bỏ']);
       return;
     } else if (category.id == 4) {
-      showDialog<String>(
-        context: context,
-        builder: (BuildContext context) => AlertDialog(
-          title: const Text('Thông báo'),
-          content: const Text('Bạn có bản cập nhật mới'),
-          actions: <Widget>[
-            TextButton(
-              onPressed: () => Navigator.pop(context, 'Cancel'),
-              child: const Text('Hủy bỏ'),
-            ),
-            TextButton(
-              onPressed: () => AppNavigator.push(category.route),
-              child: const Text('Cập nhật'),
-            ),
-          ],
-        ),
-      );
+      showAlert.show(
+          context,
+          '',
+          'Thông báo',
+          'DTV hãy đồng bộ dữ liệu trước khi cập nhập chương trình',
+          () => AppNavigator.push(category.route),
+          ['Đã đồng bộ', 'Đồng bộ']);
       return;
     }
     AppNavigator.push(category.route);
@@ -47,9 +22,6 @@ class _HeaderCardContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var themeCubit = BlocProvider.of<ThemeCubit>(context, listen: true);
-    var isDark = themeCubit.isDark;
-
     return Container(
       clipBehavior: Clip.hardEdge,
       decoration: BoxDecoration(
@@ -62,15 +34,15 @@ class _HeaderCardContent extends StatelessWidget {
               child: Align(
                 alignment: Alignment.topLeft,
                 child: IconButton(
-                    onPressed: () {
-                      themeCubit.toggleTheme();
-                    },
+                    onPressed: () {},
                     padding: EdgeInsets.only(
                       left: 28,
                     ),
                     icon: Icon(
-                      isDark ? Icons.wb_sunny_outlined : Icons.dark_mode_outlined,
-                      color: isDark ? Colors.yellow : Colors.black,
+                      //isDark ? Icons.wb_sunny_outlined : Icons.dark_mode_outlined,
+                      Icons.home,
+                      color: Colors.white,
+                      //color: isDark ? Colors.yellow : Colors.black,
                       size: 25,
                     )),
               ),
@@ -89,7 +61,19 @@ class _HeaderCardContent extends StatelessWidget {
       alignment: Alignment.topCenter,
       child: BlocBuilder<UserBloc, UserState>(builder: (context, state) {
         if (state.EmployeeName != '') {
-          return Text(state.EmployeeName);
+          return Column(
+            children: [
+              Text(
+                state.EmployeeName,
+                style: TextStyle(fontSize: 24),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'DTV: ' + state.EmployeeCode,
+                style: TextStyle(fontSize: 18),
+              ),
+            ],
+          );
         }
         return Container();
       }),

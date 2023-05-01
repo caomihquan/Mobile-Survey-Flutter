@@ -1,14 +1,17 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'dart:convert';
 
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:pokedex/Database.dart';
 import 'package:pokedex/core/apiHttpService.dart';
 import 'package:pokedex/states/user/bloc/user_bloc.dart';
 import 'package:pokedex/states/user/model/UserModel.dart';
+import '../../../core/InternetConnection.dart';
+import '../../../core/location.dart';
 import '../../../routes.dart';
 import '../../widgets/alert.dart';
+import 'dart:io';
 
 class Login extends StatefulWidget {
   @override
@@ -16,9 +19,17 @@ class Login extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<Login> {
+  Map _source = {ConnectivityResult.none: false};
+  final MyConnectivity _connectivity = MyConnectivity.instance;
+
   @override
   void initState() {
     super.initState();
+    _connectivity.initialise();
+    _connectivity.myStream.listen((source) {
+      setState(() => _source = source);
+    });
+    getPosition();
   }
 
   bool _obscureText = true;
@@ -27,6 +38,12 @@ class _LoginScreenState extends State<Login> {
     setState(() {
       _obscureText = !_obscureText;
     });
+  }
+
+  void getPosition() async {
+    var location = await Location.determinePosition();
+
+    print(location);
   }
 
   TextEditingController userNameController = TextEditingController();
@@ -39,6 +56,15 @@ class _LoginScreenState extends State<Login> {
     if (password == null || password == '') {
       return showAlert.show(context, 'error', 'Thông báo', 'Vui lòng nhập mật khẩu');
     }
+    if (_source.keys.toList()[0] == ConnectivityResult.none) {
+      return showAlert.show(
+          context,
+          'error',
+          'Thông báo',
+          'Không có kết nối mạng bạn vẫn muốn sử dụng offline chứ?',
+          () => loginOffline(username, password),
+          ['Chấp nhận', 'Kiểm tra lại']);
+    }
     try {
       var res = await APIHTTP.post(
           "core/authentication/login", {'UserName': username, 'PassWord': password}, null);
@@ -47,11 +73,24 @@ class _LoginScreenState extends State<Login> {
         user.EmployeeCode = jsonDecode(res["Data"])["Data"]['EmployeeCode'].toString();
         user.EmployeeName = jsonDecode(res["Data"])["Data"]['EmployeeFullName'].toString();
         context.read<UserBloc>().add(SetUser(user));
-
+        await DBProvider.CreateOfUpadateUser(username, password);
         await AppNavigator.push(Routes.home);
       }
     } catch (err) {
       print(err);
+    }
+  }
+
+  void loginOffline(UserName, Password) async {
+    var dataUser = await DBProvider.getUser(UserName, Password);
+    if (dataUser.isNotEmpty) {
+      var user = UserModel();
+      user.EmployeeCode = dataUser[0].userName.toString();
+      user.EmployeeName = dataUser[0].userName.toString();
+      context.read<UserBloc>().add(SetUser(user));
+      await AppNavigator.push(Routes.home);
+    } else {
+      return showAlert.show(context, 'error', 'Thông báo', 'Sai tài khoản hoặc mật khẩu');
     }
   }
 
@@ -78,18 +117,6 @@ class _LoginScreenState extends State<Login> {
                                   fit: BoxFit.fill)),
                           child: Stack(
                             children: <Widget>[
-                              // Positioned(
-                              //   right: 40,
-                              //   top: 40,
-                              //   width: 80,
-                              //   height: 150,
-                              //   child: Container(
-                              //       child: Container(
-                              //     decoration: BoxDecoration(
-                              //         image: DecorationImage(
-                              //             image: AssetImage('assets/images/clock.png'))),
-                              //   )),
-                              // ),
                               Positioned(
                                 child: Container(
                                     child: Container(

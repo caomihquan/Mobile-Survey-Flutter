@@ -35,20 +35,20 @@ class _TextQuestion extends State<TextQuestion> {
     textController.text = widget.questions[widget.questionIndex].answerResult;
     return Container(
         width: double.infinity,
-        margin: const EdgeInsets.all(10),
+        margin: const EdgeInsets.only(top: 20, bottom: 10, left: 10, right: 10),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
           Text(
             widget.questions[widget.questionIndex].questionName.toString(),
             style: const TextStyle(
-              fontSize: 14,
+              fontSize: 28,
               color: Colors.black,
             ),
           ),
           TextField(
               controller: textController,
-              style: TextStyle(color: Colors.black),
+              style: TextStyle(color: Colors.black, fontSize: 20),
               decoration: InputDecoration(
-                hintStyle: TextStyle(color: Colors.grey),
+                hintStyle: TextStyle(color: Colors.grey, fontSize: 20),
                 enabledBorder: UnderlineInputBorder(
                   borderSide: BorderSide(width: 1, color: Colors.grey),
                 ),

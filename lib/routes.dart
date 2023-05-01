@@ -25,12 +25,12 @@ enum Routes {
 class _Paths {
   // static const String splash = '/';
   static const String home = '/home';
-  static const String login = '/login';
+  static const String login = '/';
   static const String surveyprogress = '/surveyprogress';
   static const String progress = '/progress';
   static const String changepassword = '/changepassword';
   static const String itemsList = '/home/items';
-  static const String detail = '/';
+  static const String detail = '/detail';
 //surveyprogress/listsurvey/detail
   static const Map<Routes, String> _pathMap = {
     Routes.login: _Paths.login,

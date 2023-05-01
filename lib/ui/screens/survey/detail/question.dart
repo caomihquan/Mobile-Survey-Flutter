@@ -65,11 +65,12 @@ class _QuestionRadio extends State<Question> {
     return Container(
         width: double.infinity,
         margin: const EdgeInsets.all(10),
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        child: Column(crossAxisAlignment: CrossAxisAlignment.center, children: [
           Container(
+              margin: EdgeInsets.only(bottom: 24),
               child: Text(widget.questions[widget.questionIndex].questionName.toString(),
                   style: TextStyle(fontSize: textSize, color: Colors.black),
-                  textAlign: TextAlign.left)),
+                  textAlign: TextAlign.center)),
           FutureBuilder<List<JsonAnswerModel>>(
               future: getAnswers(widget.questions[widget.questionIndex].questionID),
               builder: (context, snapshot) {

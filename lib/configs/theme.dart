@@ -76,8 +76,8 @@ class Themings {
       labelLarge: lightText,
       labelSmall: lightText,
     ),
-    scaffoldBackgroundColor: AppColors.lightGrey,
+    scaffoldBackgroundColor: Color.fromARGB(255, 183, 231, 250),
     colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
-        .copyWith(background: AppColors.whiteGrey),
+        .copyWith(background: Color.fromARGB(255, 183, 236, 242)),
   );
 }

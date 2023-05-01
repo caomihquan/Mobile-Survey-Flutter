@@ -78,18 +78,6 @@ class _ChangePasswordScreenState extends State<ChangePassword> {
                       child: Stack(
                         children: <Widget>[
                           Positioned(
-                            right: 40,
-                            top: 40,
-                            width: 80,
-                            height: 150,
-                            child: Container(
-                                child: Container(
-                              decoration: BoxDecoration(
-                                  image: DecorationImage(
-                                      image: AssetImage('assets/images/clock.png'))),
-                            )),
-                          ),
-                          Positioned(
                             child: Container(
                                 child: Container(
                               margin: EdgeInsets.only(top: 50),
@@ -108,7 +96,7 @@ class _ChangePasswordScreenState extends State<ChangePassword> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsets.all(30.0),
+                      padding: EdgeInsets.only(bottom: 10.0, right: 30, left: 30),
                       child: Column(
                         children: <Widget>[
                           Container(

@@ -78,7 +78,7 @@
     {
         "QuestionID": "SL011",
         "QuestionName": "Địa điểm sản xuất kinh doanh của cơ sở là",
-        "QuestionType": 0,
+        "QuestionType": 3,
         "AnswerResult": "",
         "ValidType": 1,
         "QuestionParent": "SL000"
@@ -86,7 +86,7 @@
     {
         "QuestionID": "SL012",
         "QuestionName": "Địa điểm sản xuất kinh doanh của cơ sở",
-        "QuestionType": 0,
+        "QuestionType": 3,
         "AnswerResult": "",
         "ValidType": 1,
         "QuestionParent": "SL000"
@@ -94,7 +94,7 @@
     {
         "QuestionID": "SL013",
         "QuestionName": "Tình trạng đăng ký kinh doanh của cơ sở SXKD của ông/bà?",
-        "QuestionType": 0,
+        "QuestionType": 3,
         "AnswerResult": "",
         "QuestionParent": "SL000"
     },
@@ -131,7 +131,7 @@
     {
         "QuestionID": "SL018",
         "QuestionName": "THÔNG TIN VỀ NHÓM SẢN PHẨM CỦA CƠ SỞ",
-        "QuestionType": 1,
+        "QuestionType": 0,
         "AnswerResult": ""
     },
     {
